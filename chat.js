@@ -1,3 +1,5 @@
+const SERVER_URL = 'https://' + 'completely-determined-boatbill' + '.cloudpub.ru';
+
 document.addEventListener('DOMContentLoaded', () => {
     const messagesContainer = document.getElementById('chatMessages');
     const input = document.getElementById('chatInput');
@@ -15,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Загрузка истории при старте
     async function loadHistory() {
         try {
-            const res = await fetch('https://completely-determined-boatbill.cloudpub.ru');
+            const res = await fetch(SERVER_URL + '/history');
             const data = await res.json();
             if (data.history && data.history.length > 0) {
                 messagesContainer.innerHTML = ''; // Очищаем приветствие
@@ -42,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
         try {
-            const res = await fetch('https://completely-determined-boatbill.cloudpub.ru', {
+            const res = await fetch(SERVER_URL + '/ask', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ question })
@@ -61,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
         clearBtn.addEventListener('click', async () => {
             if (!confirm('Очистить всю историю чата?')) return;
             try {
-                await fetch('https://completely-determined-boatbill.cloudpub.ru', { method: 'POST' });
+                await fetch(SERVER_URL + '/clear-history', { method: 'POST' });
                 messagesContainer.innerHTML = '';
                 addMessage('Привет! Я ассистент отеля. Задайте вопрос.', 'bot');
             } catch (e) {
