@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Парковка: автобусы групп</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; line-height: 1.6; color: #222; }
+        .back-link { display: inline-block; margin-bottom: 20px; padding: 10px 20px; background: #f0c040; color: #222; text-decoration: none; border-radius: 6px; font-weight: bold; }
+        .back-link:hover { background: #e0b030; }
+        h1 { color: #333; border-bottom: 2px solid #f0c040; padding-bottom: 10px; }
+        h2 { color: #444; margin-top: 30px; }
+        .warning { background: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin: 20px 0; }
+        .danger { background: #f8d7da; border-left: 4px solid #dc3545; padding: 15px; margin: 20px 0; }
+        .step { background: #f5f5f5; padding: 15px; margin: 10px 0; border-radius: 6px; }
+        .screenshot { background: #e9ecef; border: 2px dashed #adb5bd; padding: 30px; text-align: center; color: #6c757d; margin: 15px 0; font-style: italic; }
+        .example { background: #e7f3ff; border-left: 4px solid #0066cc; padding: 10px 15px; margin: 10px 0; font-style: italic; }
+        ul, ol { margin: 10px 0; }
+        li { margin: 5px 0; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; background: #fff; }
+        th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+        th { background: #f0c040; color: #222; }
+    </style>
+<link rel="stylesheet" href="../nav.css">
+</head>
+<body>
+<a href="../index.html" class="back-link">← На главную</a><h1>Парковка: автобусы групп</h1>
+<p><strong>Когда это нужно:</strong> в отель заезжает группа на автобусе. Нужно учесть парковку для автобуса.</p>
+
+<h2>Стоимость</h2>
+<p><strong>2 000 ₽/сутки</strong> — если автобус забронирован и подтверждён через отдел продаж (ОП/ОБ).</p>
+<p><strong>5 000 ₽/сутки</strong> — если автобус без брони.</p>
+
+<div class="warning">
+<strong>Если на 1 день больше 2 автобусов</strong> — уточняем у FOM/AFOM по формату размещения на парковке.
+</div>
+
+<h2>Где парковать</h2>
+<p>Место для стоянки автобусов отмечено <strong>красно-белыми полосами</strong> на асфальте (ближе к зданию со стороны Брянцева, напротив арендатора IDOL FACE).</p>
+
+<div class="screenshot">
+[МЕСТО ДЛЯ СКРИНШОТА: разметка для автобусов на парковке]
+</div>
+
+<h2>Учёт автобусов</h2>
+
+<div class="step">
+<strong>В файле «АВТОБУСЫ - Учет парковочных мест» ведутся записи:</strong><br>
+<ul>
+    <li>Дата начала стоянки.</li>
+    <li>Дата окончания стоянки.</li>
+    <li>Количество автобусов.</li>
+    <li>Название группы.</li>
+    <li>Оплата (в отеле или безнал).</li>
+    <li>Подтверждён ли автобус.</li>
+    <li>Примечания.</li>
+</ul>
+</div>
+
+<div class="screenshot">
+[МЕСТО ДЛЯ СКРИНШОТА: файл учёта автобусов]
+</div>
+
+<h2>Что важно помнить</h2>
+<ul>
+    <li>Автобусы бронируются и подтверждаются заказчиком <strong>через менеджеров отдела продаж</strong>.</li>
+    <li>Если автобус без брони — стоимость 5 000 ₽/сутки.</li>
+    <li>Если автобусов больше 2 в день — уточняй у FOM/AFOM.</li>
+</ul>
+
+<h2>Частые ошибки</h2>
+<ul>
+    <li><strong>Не проверил, забронирован ли автобус.</strong> Взял 2 000 вместо 5 000 (или наоборот).</li>
+    <li><strong>Не уточнил у FOM/AFOM, если автобусов больше 2.</strong> Не хватило места.</li>
+    <li><strong>Не внёс запись в файл учёта.</strong> Забыли про автобус, он уехал без оплаты.</li>
+</ul><script src="../ui.js"></script>
+</body>
+</html>
+

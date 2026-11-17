@@ -1,0 +1,89 @@
+/* === ВЕРХНЯЯ ПАНЕЛЬ === */
+.topnav { 
+    background: #222; 
+    border-bottom: 3px solid #f0c040; 
+    position: fixed; /* Фиксируем на экране */
+    top: 0; 
+    left: 0;
+    right: 0;
+    z-index: 9999; 
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15); 
+    width: 100%; 
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.topnav-inner { 
+    max-width: 1000px; 
+    margin: 0 auto; 
+    display: flex; 
+    justify-content: center; 
+    gap: 8px; 
+    padding: 0 20px; 
+    flex-wrap: wrap; 
+    box-sizing: border-box; 
+}
+
+.topnav-link { 
+    color: #ddd; 
+    text-decoration: none; 
+    padding: 16px 22px; 
+    font-weight: 600; 
+    font-size: 15px; 
+    border-bottom: 3px solid transparent; 
+    margin-bottom: -3px; 
+    transition: all 0.25s ease; 
+    display: inline-block; 
+}
+
+.topnav-link:hover { 
+    color: #fff; 
+    background: rgba(240, 192, 64, 0.12); 
+    transform: translateY(-2px); 
+}
+
+.topnav-link.active { 
+    color: #f0c040; 
+    border-bottom-color: #f0c040; 
+    background: rgba(240, 192, 64, 0.08); 
+}
+
+/* === КНОПКА "ВВЕРХ" === */
+#scrollTopBtn {
+    position: fixed !important;
+    bottom: 30px !important;
+    right: 30px !important;
+    width: 50px !important;
+    height: 50px !important;
+    background: #f0c040 !important;
+    color: #222 !important;
+    border: none !important;
+    border-radius: 50% !important;
+    font-size: 24px !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: all 0.3s ease !important;
+    z-index: 9999 !important;
+}
+
+#scrollTopBtn.show {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+#scrollTopBtn:hover {
+    background: #e0b030 !important;
+    transform: translateY(-5px) !important;
+}
+
+/* === СПАСЕНИЕ ДЛЯ СТАТЕЙ === */
+/* Отодвигаем текст статьи вниз, чтобы панель не перекрывала заголовок */
+body.has-topnav {
+    padding-top: 70px !important; 
+}

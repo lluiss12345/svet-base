@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Walk-in: заселение день в день</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; line-height: 1.6; color: #222; }
+        .back-link { display: inline-block; margin-bottom: 20px; padding: 10px 20px; background: #f0c040; color: #222; text-decoration: none; border-radius: 6px; font-weight: bold; }
+        .back-link:hover { background: #e0b030; }
+        h1 { color: #333; border-bottom: 2px solid #f0c040; padding-bottom: 10px; }
+        h2 { color: #444; margin-top: 30px; }
+        .warning { background: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin: 20px 0; }
+        .danger { background: #f8d7da; border-left: 4px solid #dc3545; padding: 15px; margin: 20px 0; }
+        .step { background: #f5f5f5; padding: 15px; margin: 10px 0; border-radius: 6px; }
+        .screenshot { background: #e9ecef; border: 2px dashed #adb5bd; padding: 30px; text-align: center; color: #6c757d; margin: 15px 0; font-style: italic; }
+        .example { background: #e7f3ff; border-left: 4px solid #0066cc; padding: 10px 15px; margin: 10px 0; font-style: italic; }
+        ul, ol { margin: 10px 0; }
+        li { margin: 5px 0; }
+    </style>
+<link rel="stylesheet" href="../nav.css">
+</head>
+<body>
+<a href="../index.html" class="back-link">← На главную</a><h1>Walk-in: заселение день в день</h1>
+<p><strong>Когда это нужно:</strong> гость приходит без брони (или звонит в день заезда) и хочет заселиться сегодня. Бронь создаётся и заселяется в один день.</p>
+<div class="warning"><strong>Что НЕ считается Walk-in:</strong> продление проживания (гость уже живёт у нас и продлевает) — это не Walk-in, это продление (отдельная статья). Walk-in — это именно новая бронь, созданная и заселённая день в день.</div>
+<h2>Как оформить Walk-in</h2>
+<div class="step"><strong>Шаг 1. Проверь наличие номеров.</strong><br>Посмотри в Fidelio, есть ли свободные номера на сегодня. Если нет — предложи гостю другой вариант или другой отель.</div>
+<div class="step"><strong>Шаг 2. Создай бронь.</strong><br>Создай новую бронь в Fidelio. Укажи:<ul><li>Даты заезда и выезда.</li><li>Категорию номера.</li><li>Тариф.</li><li>Количество гостей.</li></ul></div>
+<div class="step"><strong>Шаг 3. Укажи источник.</strong><br>В поле «Source Code» выбери <strong>WalkIn</strong>. Это важно — иначе система не будет считать эту бронь как Walk-in, и она не попадёт в отчёт.</div>
+<div class="screenshot">[МЕСТО ДЛЯ СКРИНШОТА: окно создания брони с полем Source Code = WalkIn]</div>
+<div class="step"><strong>Шаг 4. Засели гостя по стандартной процедуре.</strong><br>Дальше — как обычное заселение: проверка документов, регистрационная карта, оплата, ключ (смотри статью 1.1).</div>
+<h2>Отчёт по Walk-in (дважды в месяц)</h2>
+<p>Каждый сотрудник СПиР должен заполнять свой отчёт по Walk-in <strong>два раза в месяц</strong>:</p>
+<ul><li>За первую половину месяца — <strong>до 15-го числа</strong>.</li><li>За вторую половину — <strong>до 30-го числа</strong>.</li></ul>
+<div class="step"><strong>Как найти свои Walk-in в Fidelio:</strong><ol><li>Открой Fidelio. В разделе поиска выбери <strong>Arrival → Between</strong> и укажи нужные даты.</li><li>Добавь фильтр <strong>Source Code → Equal to → WalkIn</strong>.</li><li>Добавь фильтр <strong>Created By → Equal to → твоя фамилия</strong>.</li><li>Нажми <strong>All</strong>. Система покажет все твои Walk-in за период.</li></ol></div>
+<div class="screenshot">[МЕСТО ДЛЯ СКРИНШОТА: окно поиска в Fidelio с тремя фильтрами (Arrival, Source Code, Created By)]</div>
+<div class="step"><strong>Как заполнить файл учёта:</strong><br>В файле учёта Walk-in заполняй строго по форме:<ul><li>ФИО — строчными буквами (НЕ КАПСОМ).</li><li>Даты проживания — в формате <strong>дд/мм/гггг – дд/мм/гггг</strong>.</li><li>Цена — за первую ночь проживания, в числовом формате (например, <code>5050,00</code>).</li><li>Бонус 5% и -13% рассчитываются автоматически.</li></ul></div>
+<div class="step"><strong>Как выгрузить список в Excel:</strong><ol><li>В списке Walk-in нажми правой кнопкой мыши на любое место.</li><li>В открывшемся окне убери галочку <strong>Fit Page Width</strong>.</li><li>В выпадающем списке выбери <strong>Excel Document</strong>.</li><li>Нажми <strong>Export</strong>.</li></ol></div>
+<div class="screenshot">[МЕСТО ДЛЯ СКРИНШОТА: окно Print Grid Parameters с выбранным Excel Document]</div>
+<div class="danger"><strong>Важно:</strong> учитываются только те бронирования, которые созданы <strong>под твоим логом</strong> в Fidelio. Если ты заселил гостя, но бронь создал кто-то другой — это не твой Walk-in.</div>
+<h2>Частые ошибки</h2>
+<ul><li><strong>Забыл указать Source Code = WalkIn.</strong> Бронь не попадёт в отчёт, бонус не начислят.</li><li><strong>Не заполнил отчёт вовремя.</strong> До 15-го и до 30-го числа — строго.</li><li><strong>Записал ФИО капсом.</strong> Форма требует строчные буквы.</li><li><strong>Указал цену за все ночи, а не за первую.</strong> В файле учёта — цена за первую ночь.</li></ul><script src="../ui.js"></script>
+</body>
+</html>
+

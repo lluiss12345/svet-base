@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Инвентарь: доп. кровати и люльки (Inventory в Fidelio)</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; line-height: 1.6; color: #222; }
+        .back-link { display: inline-block; margin-bottom: 20px; padding: 10px 20px; background: #f0c040; color: #222; text-decoration: none; border-radius: 6px; font-weight: bold; }
+        .back-link:hover { background: #e0b030; }
+        h1 { color: #333; border-bottom: 2px solid #f0c040; padding-bottom: 10px; }
+        h2 { color: #444; margin-top: 30px; }
+        .warning { background: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin: 20px 0; }
+        .danger { background: #f8d7da; border-left: 4px solid #dc3545; padding: 15px; margin: 20px 0; }
+        .step { background: #f5f5f5; padding: 15px; margin: 10px 0; border-radius: 6px; }
+        .screenshot { background: #e9ecef; border: 2px dashed #adb5bd; padding: 30px; text-align: center; color: #6c757d; margin: 15px 0; font-style: italic; }
+        .example { background: #e7f3ff; border-left: 4px solid #0066cc; padding: 10px 15px; margin: 10px 0; font-style: italic; }
+        ul, ol { margin: 10px 0; }
+        li { margin: 5px 0; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; background: #fff; }
+        th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+        th { background: #f0c040; color: #222; }
+    </style>
+<link rel="stylesheet" href="../nav.css">
+</head>
+<body>
+<a href="../index.html" class="back-link">← На главную</a><h1>Инвентарь: доп. кровати и люльки (Inventory в Fidelio)</h1>
+<p><strong>Когда это нужно:</strong> гость просит дополнительную кровать или детскую люльку. Их количество ограничено, нужно проверять наличие.</p>
+
+<div class="warning">
+<strong>Главное правило:</strong> перед подтверждением гостю наличия доп. кровати или люльки <strong>обязательно</strong> сверься с отчётом Forecast — Occupancy/Availability per Inventory.
+</div>
+
+<h2>Как проверить наличие</h2>
+
+<div class="step">
+<strong>Шаг 1. Открой отчёт.</strong><br>
+В Fidelio: отчёт <strong>Forecast — Occupancy/Availability per Inventory</strong>.
+</div>
+
+<div class="screenshot">
+[МЕСТО ДЛЯ СКРИНШОТА: список отчётов с выделенным Forecast — Occupancy/Availability per Inventory]
+</div>
+
+<div class="step">
+<strong>Шаг 2. Выставь нужные даты.</strong><br>
+Укажи дату заезда в поля «С даты» и «По дату».
+</div>
+
+<div class="screenshot">
+[МЕСТО ДЛЯ СКРИНШОТА: окно параметров отчёта с датами]
+</div>
+
+<div class="step">
+<strong>Шаг 3. Посмотри результат.</strong><br>
+В отчёте будет:
+<ul>
+    <li><strong># ALL</strong> — всего.</li>
+    <li><strong># Avail</strong> — доступно.</li>
+    <li><strong># Occ</strong> — в использовании.</li>
+</ul>
+</div>
+
+<div class="screenshot">
+[МЕСТО ДЛЯ СКРИНШОТА: результат отчёта с цифрами по доп. кроватям и люлькам]
+</div>
+
+<h2>Как отметить в брони</h2>
+
+<div class="step">
+<strong>Шаг 1. Открой бронь.</strong><br>
+Перейди в раздел <strong>Inventory / Оборудование</strong>.
+</div>
+
+<div class="step">
+<strong>Шаг 2. Поставь галочку.</strong><br>
+Отметь «Люлька» или «Дополнительная кровать».
+</div>
+
+<div class="screenshot">
+[МЕСТО ДЛЯ СКРИНШОТА: раздел Inventory в брони с галочками]
+</div>
+
+<div class="step">
+<strong>Шаг 3. Сохрани изменения.</strong><br>
+Нажми ОК справа внизу брони. Количество свободных кроватей/люлек изменится на актуальное.
+</div>
+
+<div class="screenshot">
+[МЕСТО ДЛЯ СКРИНШОТА: раздел Inventory после сохранения]
+</div>
+
+<h2>Важно</h2>
+<div class="danger">
+<ul>
+    <li><strong>Эта опция не отменяет проставление указаний (traces) и атрибутов + окраски в бронировании!</strong> Если бронь от стойки — ОБЯЗАТЕЛЬНО, помимо галочек в Inventory, проставляй указанные ранее параметры.</li>
+    <li><strong>При назначении номеров</strong> также проверяй наличие галочек в Inventory за отделом бронирования.</li>
+</ul>
+</div>
+
+<h2>Частые ошибки</h2>
+<ul>
+    <li><strong>Пообещал кровать без проверки отчёта.</strong> Кроватей нет, гость недоволен.</li>
+    <li><strong>Не поставил галочку в Inventory.</strong> Кровать не забронирована, её может занять другой гость.</li>
+    <li><strong>Не проставил traces.</strong> Горничная не знает, что нужно принести кровать.</li>
+    <li><strong>Не проверил галочки при назначении номеров.</strong> Гость приехал, а кровати нет.</li>
+</ul><script src="../ui.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>База знаний SVET</title>
+    <link rel="stylesheet" href="nav.css">
+    <style>
+        * { box-sizing: border-box; }
+
+        body { 
+            font-family: Arial, sans-serif; 
+            line-height: 1.6; 
+            color: #222; 
+            background: #fff; 
+        }
+
+        .page-content {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        h1 { color: #333; border-bottom: 3px solid #f0c040; padding-bottom: 10px; }
+
+        /* Стили для чата */
+        .chat-container {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            height: 350px;
+            min-height: 200px;
+            max-height: 90vh;
+            resize: vertical;
+            overflow: auto;
+            position: relative;
+        }
+
+        /* Красивый ползунок для ресайза */
+        .chat-container::-webkit-resizer {
+            background-color: #f0c040;
+            border-radius: 0 0 12px 0;
+            width: 20px;
+            height: 20px;
+            background-image: linear-gradient(135deg, transparent 50%, #222 50%, #222 60%, transparent 60%, transparent 70%, #222 70%, #222 80%, transparent 80%);
+            background-size: 100% 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .chat-header { font-size: 20px; font-weight: bold; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; }
+        .chat-messages { flex: 1; overflow-y: auto; padding: 10px; background: #f9f9f9; border-radius: 8px; margin-bottom: 15px; display: flex; flex-direction: column; gap: 15px; }
+        .msg { max-width: 85%; padding: 12px 16px; border-radius: 12px; line-height: 1.5; white-space: pre-wrap; }
+        .msg.user { background: #f0c040; color: #222; align-self: flex-end; border-bottom-right-radius: 4px; }
+        .msg.bot { background: #fff; border: 1px solid #e0e0e0; color: #222; align-self: flex-start; border-bottom-left-radius: 4px; }
+        .chat-input-row { display: flex; gap: 10px; }
+        .chat-input-row input { flex: 1; padding: 12px 16px; border: 1px solid #ccc; border-radius: 8px; font-size: 16px; outline: none; }
+        .chat-input-row input:focus { border-color: #f0c040; }
+        .chat-input-row button { padding: 12px 24px; background: #f0c040; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; transition: background 0.2s; }
+        .chat-input-row button:hover { background: #e0b030; }
+        .btn-clear { background: #eee; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 14px; transition: background 0.2s; }
+        .btn-clear:hover { background: #ddd; }
+
+        /* Стили для спойлеров */
+        .accordion { background: #f9f9f9; border-left: 4px solid #f0c040; padding: 15px 20px; cursor: pointer; margin-top: 15px; font-weight: bold; font-size: 18px; user-select: none; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; }
+        .accordion:hover { background: #f0f0f0; }
+        .accordion.active { background: #fff3cd; }
+        .accordion::after { content: '+'; font-size: 24px; font-weight: bold; color: #666; }
+        .accordion.active::after { content: '−'; }
+        .panel { display: none; padding: 0 20px; background: #fff; }
+        .panel.show { display: block; }
+        
+        /* Стили для ссылок на статьи */
+        .article-link { display: block; padding: 8px 12px; border-bottom: 1px solid #eee; color: #0066cc; text-decoration: none; transition: background 0.2s, padding-left 0.2s; }
+        .article-link:hover { background: #f5f5f5; text-decoration: underline; padding-left: 18px; }
+        .badge { background: #ffc107; color: #000; font-size: 12px; padding: 2px 8px; border-radius: 10px; margin-left: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="page-content">
+    <h1>База знаний отеля SVET</h1>
+
+    <div class="chat-container">
+        <div class="chat-header">
+            <span>🤖 Ассистент SVET</span>
+            <button class="btn-clear" id="chatClear">Очистить чат</button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="msg bot">Привет! Я ассистент отеля. Задайте вопрос, и я постараюсь найти ответ в базе знаний.</div>
+        </div>
+        <div class="chat-input-row">
+            <input type="text" id="chatInput" placeholder="Задайте вопрос..." autocomplete="off">
+            <button id="chatSend">➤</button>
+        </div>
+    </div>
+
+    <!-- РАЗДЕЛ 1 -->
+    <div class="accordion">1. ЗАСЕЛЕНИЕ И ВЫСЕЛЕНИЕ</div>
+    <div class="panel">
+        <a class="article-link" href="content/1-1-zaselenie-gostya.html">1.1. Как заселить гостя (индивидуальное заселение) <span class="badge">★</span></a>
+        <a class="article-link" href="content/1-2-max-id.html">1.2. Заселение через MAX ID (Госуслуги, QR-код)</a>
+        <a class="article-link" href="content/1-3-gruppovoy-zaezd.html">1.3. Групповой заезд: пошаговая инструкция</a>
+        <a class="article-link" href="content/1-4-forma-dokumentov-grupp.html">1.4. Форма приема и выдачи документов для групп (бланк)</a>
+        <a class="article-link" href="content/1-5-walk-in.html">1.5. Walk-in: заселение день в день</a>
+        <a class="article-link" href="content/1-6-vechernee-zaselenie.html">1.6. Вечернее заселение (для долгосрочных гостей)</a>
+        <a class="article-link" href="content/1-7-vyselenie-gostya.html">1.7. Как выселить гостя <span class="badge">★</span></a>
+        <a class="article-link" href="content/1-8-ranniy-pozdniy.html">1.8. Ранний заезд и поздний выезд <span class="badge">★</span></a>
+        <a class="article-link" href="content/1-9-half-board.html">1.9. Half Board и ужины: как продать и оформить</a>
+        <a class="article-link" href="content/1-10-upgrade.html">1.10. Апгрейд номера: как посчитать и оформить</a>
+        <a class="article-link" href="content/1-11-prodlenie.html">1.11. Продление проживания: как оформить</a>
+        <a class="article-link" href="content/1-12-room-allocation.html">1.12. Распределение номеров (Room allocation)</a>
+    </div>
+
+    <!-- РАЗДЕЛ 2 -->
+    <div class="accordion">2. ДЕНЬГИ И КАССА</div>
+    <div class="panel">
+        <a class="article-link" href="content/2-1-korrekciya.html">2.1. Как сделать коррекцию начисления <span class="badge">★</span></a>
+        <a class="article-link" href="content/2-2-vozvrat-nalichnymi.html">2.2. Как сделать возврат наличными <span class="badge">★</span></a>
+        <a class="article-link" href="content/2-3-vozvrat-na-kartu.html">2.3. Как сделать возврат на карту <span class="badge">★</span></a>
+        <a class="article-link" href="content/2-4-vozvrat-sbp.html">2.4. Как сделать возврат по СБП</a>
+        <a class="article-link" href="content/2-5-fiktivnyy-vozvrat.html">2.5. Фиктивный возврат (внутренний)</a>
+        <a class="article-link" href="content/2-6-predavtorizaciya.html">2.6. Предавторизация: как заблокировать сумму</a>
+        <a class="article-link" href="content/2-7-split.html">2.7. SPLIT: как разделить начисление</a>
+        <a class="article-link" href="content/2-8-komandirovochnye.html">2.8. Командировочные гости: чеки, счета, закрывающие документы</a>
+        <a class="article-link" href="content/2-9-schet-gostyu.html">2.9. Как выдать счёт гостю</a>
+        <a class="article-link" href="content/2-10-kassovaya-otchetnost.html">2.10. Кассовая отчётность: KM-3, KM-6, Z-отчёты</a>
+        <a class="article-link" href="content/2-11-zakrytie-smeny.html">2.11. Закрытие смены кассира</a>
+        <a class="article-link" href="content/2-12-tarify-prozhivanie.html">2.12. Тарифы на проживание (актуальные)</a>
+        <a class="article-link" href="content/2-13-tarify-dop-uslugi.html">2.13. Тарифы на дополнительные услуги</a>
+        <a class="article-link" href="content/2-14-tarify-parking.html">2.14. Тарифы на парковку</a>
+        <a class="article-link" href="content/2-15-tarify-himchistka.html">2.15. Тарифы на химчистку</a>
+        <a class="article-link" href="content/2-16-preyskurant-usherb.html">2.16. Прейскурант на возмещение ущерба</a>
+        <a class="article-link" href="content/2-17-pakety-dolgosrok.html">2.17. Пакеты дополнительных услуг для долгосрока</a>
+    </div>
+
+    <!-- РАЗДЕЛ 3 -->
+    <div class="accordion">3. ДОКУМЕНТЫ И МИГРАЦИЯ</div>
+    <div class="panel">
+        <a class="article-link" href="content/3-1-reg-uchet-rf.html">3.1. Регистрационный учёт граждан РФ <span class="badge">★</span></a>
+        <a class="article-link" href="content/3-2-forma-5.html">3.2. Форма №5: как заполнить и распечатать</a>
+        <a class="article-link" href="content/3-3-mig-uchen-baza.html">3.3. Миграционный учёт: базовая информация для новичка</a>
+        <a class="article-link" href="content/3-4-mig-kratkosrok.html">3.4. Постановка на учёт иностранцев: краткосрок (через Почту)</a>
+        <a class="article-link" href="content/3-5-mig-dolgosrok.html">3.5. Постановка на учёт иностранцев: долгосрок (через МВД)</a>
+        <a class="article-link" href="content/3-6-mig-vvedenskiy.html">3.6. Постановка на учёт через Введенский (электронно)</a>
+        <a class="article-link" href="content/3-7-snyatie-s-ucheta.html">3.7. Снятие с учёта иностранца</a>
+        <a class="article-link" href="content/3-8-dokumenty-inostranca.html">3.8. Документы иностранца: виза, миграционная карта, патент, РВП, ВНЖ</a>
+        <a class="article-link" href="content/3-9-soprovoditelnoe-pismo.html">3.9. Сопроводительное письмо: как написать</a>
+        <a class="article-link" href="content/3-10-opis-pochty.html">3.10. Опись почты: как заполнить</a>
+        <a class="article-link" href="content/3-11-dolgosrok-dogovor.html">3.11. Долгосрок: договор, акт заезда, акт выезда</a>
+        <a class="article-link" href="content/3-12-dolgosrok-tarify.html">3.12. Долгосрок: тарифы и условия</a>
+        <a class="article-link" href="content/3-13-dolgosrok-pamyatka.html">3.13. Долгосрок: памятка администратору при отсутствии менеджера</a>
+        <a class="article-link" href="content/3-14-vechernee-dolgosrok.html">3.14. Вечернее заселение долгосрока (алгоритм)</a>
+        <a class="article-link" href="content/3-15-pamyatka-arendatora.html">3.15. Памятка арендатора офисных помещений</a>
+    </div>
+
+    <!-- РАЗДЕЛ 4 -->
+    <div class="accordion">4. УСЛУГИ</div>
+    <div class="panel">
+        <a class="article-link" href="content/4-1-prachechnaya-gost.html">4.1. Прачечная самообслуживания: как рассказать гостю <span class="badge">★</span></a>
+        <a class="article-link" href="content/4-2-prachechnaya-prof.html">4.2. Прачечная: профессиональная стирка (краткосрок)</a>
+        <a class="article-link" href="content/4-3-prachechnaya-dolgosrok.html">4.3. Прачечная: условия для долгосрока (карточки, промокоды)</a>
+        <a class="article-link" href="content/4-4-himchistka.html">4.4. Химчистка: как принять заказ</a>
+        <a class="article-link" href="content/4-5-parking-tarify.html">4.5. Парковка: тарифы и как оплатить <span class="badge">★</span></a>
+        <a class="article-link" href="content/4-6-parking-parkonika.html">4.6. Парковка: работа в Парконике</a>
+        <a class="article-link" href="content/4-7-parking-invalidy.html">4.7. Парковка: инвалиды (бесплатно)</a>
+        <a class="article-link" href="content/4-8-parking-avtobusy.html">4.8. Парковка: автобусы групп</a>
+        <a class="article-link" href="content/4-9-parking-dolgosrok.html">4.9. Парковка: долгосрок (непроживающие)</a>
+        <a class="article-link" href="content/4-10-transfer.html">4.10. Трансфер: как заказать</a>
+        <a class="article-link" href="content/4-11-avrora.html">4.11. Переговорная «Аврора»: как забронировать</a>
+        <a class="article-link" href="content/4-12-invalidnoe-kreslo.html">4.12. Инвалидное кресло: как выдать</a>
+        <a class="article-link" href="content/4-13-loyalnost-gost.html">4.13. Программа лояльности Nord Hotels: как рассказать гостю</a>
+        <a class="article-link" href="content/4-14-loyalnost-registraciya.html">4.14. Программа лояльности: как зарегистрировать гостя (сканер, QR)</a>
+        <a class="article-link" href="content/4-15-loyalnost-ota.html">4.15. Программа лояльности: гости с OTA (повышенный статус)</a>
+        <a class="article-link" href="content/4-16-dop-uslugi.html">4.16. Доп. услуги: подъём багажа, завтрак в номер, аренда и т.д.</a>
+        <a class="article-link" href="content/4-17-inventar-krovati.html">4.17. Инвентарь: доп. кровати и люльки (Inventory в Fidelio)</a>
+        <a class="article-link" href="content/4-18-2roomz.html">4.18. 2ROOMZ: как отвечать на сообщения</a>
+    </div>
+
+    <!-- РАЗДЕЛ 5 -->
+    <div class="accordion">5. БЕЗОПАСНОСТЬ И ВНЕШТАТНЫЕ СИТУАЦИИ</div>
+    <div class="panel">
+        <a class="article-link" href="content/5-1-pozhar.html">5.1. Пожарная тревога: что делать <span class="badge">★</span></a>
+        <a class="article-link" href="content/5-2-minirovanie.html">5.2. Звонок о минировании: чек-лист</a>
+        <a class="article-link" href="content/5-3-buynye-gosti.html">5.3. Буйные/пьяные гости: как действовать</a>
+        <a class="article-link" href="content/5-4-kurenie.html">5.4. Курение в номере: регламент и штраф <span class="badge">★</span></a>
+        <a class="article-link" href="content/5-5-zapreshchennye-veshchestva.html">5.5. Запрещённые вещества: что делать</a>
+        <a class="article-link" href="content/5-6-lost-found.html">5.6. Потерянные вещи (Lost&Found)</a>
+        <a class="article-link" href="content/5-7-vyzov-sluzhb.html">5.7. Вызов Росгвардии, полиции, скорой</a>
+    </div>
+
+    <!-- РАЗДЕЛ 6 -->
+    <div class="accordion">6. ОТЕЛЬ И СПРАВОЧНИКИ</div>
+    <div class="panel">
+        <a class="article-link" href="content/6-1-nomer-fund-kategorii.html">6.1. Номерной фонд: категории и отличия <span class="badge">★</span></a>
+        <a class="article-link" href="content/6-2-nomer-fund-komplektaciya.html">6.2. Номерной фонд: комплектация номеров</a>
+        <a class="article-link" href="content/6-3-lifty.html">6.3. Схема лифтов</a>
+        <a class="article-link" href="content/6-4-telefonnyy-spravochnik.html">6.4. Телефонный справочник (актуальный)</a>
+        <a class="article-link" href="content/6-5-rezhim-raboty.html">6.5. Режим работы служб и ресторанов</a>
+        <a class="article-link" href="content/6-6-wifi-zavtraki.html">6.6. Wi-Fi, завтраки, лобби-бар</a>
+        <a class="article-link" href="content/6-7-konferenc-zaly.html">6.7. Конференц-залы</a>
+        <a class="article-link" href="content/6-8-pravila-prozhivaniya.html">6.8. Правила проживания (гостевая версия)</a>
+        <a class="article-link" href="content/6-9-pravila-pitomcy.html">6.9. Правила проживания с питомцами</a>
+        <a class="article-link" href="content/6-10-pravila-mop.html">6.10. Правила пользования МОП и конференц-залами</a>
+        <a class="article-link" href="content/6-11-obshchaya-informaciya.html">6.11. Общая информация об отеле</a>
+    </div>
+
+    <!-- РАЗДЕЛ 7 -->
+    <div class="accordion">7. РАБОТА СОТРУДНИКА</div>
+    <div class="panel">
+        <a class="article-link" href="content/7-1-cheklist-dnevnoy.html">7.1. Чек-лист дневного администратора</a>
+        <a class="article-link" href="content/7-2-cheklist-nochnoy.html">7.2. Чек-лист ночного администратора</a>
+        <a class="article-link" href="content/7-3-cheklist-nochnoy-menedzher.html">7.3. Чек-лист ночного менеджера</a>
+        <a class="article-link" href="content/7-4-cheklist-starshiy.html">7.4. Чек-лист старшего администратора</a>
+        <a class="article-link" href="content/7-5-cheklist-bellboy.html">7.5. Чек-лист bellboy</a>
+        <a class="article-link" href="content/7-6-cheklist-pasportist.html">7.6. Чек-лист паспортиста</a>
+        <a class="article-link" href="content/7-7-peredacha-smeny.html">7.7. Передача смены: как правильно</a>
+        <a class="article-link" href="content/7-8-telefonnyy-etiket.html">7.8. Телефонный этикет и скрипты <span class="badge">★</span></a>
+        <a class="article-link" href="content/7-9-telefon-grandstream.html">7.9. Работа с телефоном (Grandstream)</a>
+        <a class="article-link" href="content/7-10-klyuchi-ilocks.html">7.10. Работа с ключами iLocks</a>
+        <a class="article-link" href="content/7-11-master-klyuch.html">7.11. Выдача мастер-ключа</a>
+        <a class="article-link" href="content/7-12-klyuch-dublikat.html">7.12. Выдача нового ключа или дубликата гостю</a>
+        <a class="article-link" href="content/7-13-pobudka.html">7.13. Услуга побудки</a>
+        <a class="article-link" href="content/7-14-bagazh.html">7.14. Хранение и выдача багажа</a>
+        <a class="article-link" href="content/7-15-dostavka-korrespondencii.html">7.15. Доставка корреспонденции, багажа, заказов</a>
+        <a class="article-link" href="content/7-16-pip-do.html">7.16. Выдача ПИП и ДО</a>
+        <a class="article-link" href="content/7-17-bron-po-telefonu.html">7.17. Бронирование номера по телефону</a>
+        <a class="article-link" href="content/7-18-inventarizaciya-stoyki.html">7.18. Инвентаризация стойки</a>
+        <a class="article-link" href="content/7-19-obuchenie-plan.html">7.19. Обучение: план для нового сотрудника</a>
+        <a class="article-link" href="content/7-20-proverka-znaniy.html">7.20. Проверка знаний сотрудника СПиР</a>
+        <a class="article-link" href="content/7-21-dolzhnostnye-instrukcii.html">7.21. Должностные инструкции (справочно)</a>
+    </div>
+</div>
+
+<script>
+    // Логика спойлеров
+    var acc = document.getElementsByClassName("accordion");
+    for (var i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        });
+    }
+</script>
+<script src="chat.js"></script>
+<script src="ui.js"></script>
+
+</body>
+</html>

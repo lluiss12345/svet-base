@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Как сделать возврат по СБП</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; line-height: 1.6; color: #222; }
+        .back-link { display: inline-block; margin-bottom: 20px; padding: 10px 20px; background: #f0c040; color: #222; text-decoration: none; border-radius: 6px; font-weight: bold; }
+        .back-link:hover { background: #e0b030; }
+        h1 { color: #333; border-bottom: 2px solid #f0c040; padding-bottom: 10px; }
+        h2 { color: #444; margin-top: 30px; }
+        .warning { background: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin: 20px 0; }
+        .danger { background: #f8d7da; border-left: 4px solid #dc3545; padding: 15px; margin: 20px 0; }
+        .step { background: #f5f5f5; padding: 15px; margin: 10px 0; border-radius: 6px; }
+        .screenshot { background: #e9ecef; border: 2px dashed #adb5bd; padding: 30px; text-align: center; color: #6c757d; margin: 15px 0; font-style: italic; }
+        .example { background: #e7f3ff; border-left: 4px solid #0066cc; padding: 10px 15px; margin: 10px 0; font-style: italic; }
+        ul, ol { margin: 10px 0; }
+        li { margin: 5px 0; }
+    </style>
+<link rel="stylesheet" href="../nav.css">
+</head>
+<body>
+<a href="../index.html" class="back-link">← На главную</a><h1>Как сделать возврат по СБП</h1>
+<p><strong>Когда это нужно:</strong> гость оплатил через СБП (по QR-коду или по ссылке), а потом передумал. Ты возвращаешь деньги по СБП.</p>
+
+<div class="danger">
+<strong>Главное правило:</strong> возврат по СБП делается только на тот же Source ID (номер исходной оплаты), с которого была оплата. Нельзя вернуть на другую карту или другой номер телефона.
+</div>
+
+<h2>Что подготовить</h2>
+<ul>
+    <li>Гость должен быть рядом.</li>
+    <li>Паспорт гостя (страницы 2 и 3).</li>
+    <li>Чек об оплате (с Source ID — 19 цифр).</li>
+</ul>
+
+<h2>Шаги</h2>
+
+<div class="step">
+<strong>Шаг 1. Проверь, через какой банк была оплата.</strong><br>
+СБП может быть через терминал ВТБ или Русского Стандарта. Возврат — через тот же.
+</div>
+
+<div class="step">
+<strong>Шаг 2. Уточни у гостя все детали.</strong><br>
+Спроси, с какого банка платил, на какой номер телефона. Сверь с чеком.
+</div>
+
+<div class="step">
+<strong>Шаг 3. Открой биллинг гостя в Fidelio.</strong><br>
+Payments → введи сумму с минусом → комментарий «Возврат по СБП: причина возврата» → Post.
+</div>
+
+<div class="screenshot">
+[МЕСТО ДЛЯ СКРИНШОТА: биллинг с проведённым возвратом по СБП]
+</div>
+
+<div class="step">
+<strong>Шаг 4. Проведи возврат через терминал.</strong>
+<br><br>
+<strong>Через терминал Русского Стандарта:</strong>
+<ol>
+    <li>Нажми цифру «0».</li>
+    <li>Выбери «Операции СБП».</li>
+    <li>Выбери «Возврат СБП».</li>
+    <li>Введи пароль <code>000000</code>.</li>
+    <li>Нажми зелёную кнопку.</li>
+    <li>Введи сумму.</li>
+    <li>Введи номер исходной оплаты (Source ID, 19 цифр с чека оплаты).</li>
+</ol>
+<br>
+<strong>Через терминал ВТБ:</strong>
+<ol>
+    <li>Нажми цифру «0».</li>
+    <li>Нажми цифру «9» (возврат СБП).</li>
+    <li>Введи номер исходной оплаты (Source ID, 19 цифр).</li>
+    <li>Введи сумму к возврату.</li>
+</ol>
+</div>
+
+<div class="screenshot">
+[МЕСТО ДЛЯ СКРИНШОТА: экран терминала с операцией возврата СБП]
+</div>
+
+<div class="step">
+<strong>Шаг 5. Распечатай терминальный чек.</strong><br>
+Один — себе, второй — гостю.
+</div>
+
+<div class="step">
+<strong>Шаг 6. Фискальный чек обязательно отдай гостю.</strong>
+</div>
+
+<div class="step">
+<strong>Шаг 7. Собери пакет документов.</strong><br>
+<ol>
+    <li>Копия паспорта гостя (страницы 2 и 3).</li>
+    <li>Квитанция на возврат (из Fidelio) + подпись гостя.</li>
+    <li>Счёт (Folio) с возвратом.</li>
+    <li>Терминальный чек.</li>
+</ol>
+</div>
+
+<div class="step">
+<strong>Шаг 8. Отнеси в офис.</strong><br>
+В лоток «Возвраты».
+</div>
+
+<h2>Сроки возврата</h2>
+<p>Деньги приходят в течение <strong>3–5 рабочих дней</strong>, иногда до 2 недель (зависит от банка).</p>
+
+<h2>Частые ошибки</h2>
+<ul>
+    <li><strong>Вернул через не тот терминал.</strong> Не пройдёт.</li>
+    <li><strong>Неверный Source ID.</strong> Возврат уйдёт не туда или не пройдёт.</li>
+    <li><strong>Забыл минус в Fidelio.</strong> Система записала как оплату.</li>
+    <li><strong>Не отдал фискальный чек гостю.</strong> Гость не сможет подтвердить возврат.</li>
+</ul><script src="../ui.js"></script>
+</body>
+</html>
+

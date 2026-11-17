@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Работа с ключами iLocks</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; line-height: 1.6; color: #222; }
+        .back-link { display: inline-block; margin-bottom: 20px; padding: 10px 20px; background: #f0c040; color: #222; text-decoration: none; border-radius: 6px; font-weight: bold; }
+        .back-link:hover { background: #e0b030; }
+        h1 { color: #333; border-bottom: 2px solid #f0c040; padding-bottom: 10px; }
+        h2 { color: #444; margin-top: 30px; }
+        .warning { background: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin: 20px 0; }
+        .danger { background: #f8d7da; border-left: 4px solid #dc3545; padding: 15px; margin: 20px 0; }
+        .step { background: #f5f5f5; padding: 15px; margin: 10px 0; border-radius: 6px; }
+        .screenshot { background: #e9ecef; border: 2px dashed #adb5bd; padding: 30px; text-align: center; color: #6c757d; margin: 15px 0; font-style: italic; }
+        .example { background: #e7f3ff; border-left: 4px solid #0066cc; padding: 10px 15px; margin: 10px 0; font-style: italic; }
+        ul, ol { margin: 10px 0; }
+        li { margin: 5px 0; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; background: #fff; }
+        th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+        th { background: #f0c040; color: #222; }
+    </style>
+<link rel="stylesheet" href="../nav.css">
+</head>
+<body>
+<a href="../index.html" class="back-link">← На главную</a><h1>Работа с ключами iLocks</h1>
+<p><strong>Когда это нужно:</strong> ты кодируешь ключи для гостей.</p>
+
+<h2>Вход в систему</h2>
+<div class="step">
+<strong>Перейди на сайт (закреплён на каждом ПК).</strong><br>
+Логин: <code>78126793373</code><br>
+Пароль: <code>202508</code><br>
+URL: <code>http://10.160.19.35:9981</code>
+</div>
+
+<div class="screenshot">
+[МЕСТО ДЛЯ СКРИНШОТА: окно авторизации iLocks]
+</div>
+
+<h2>Кодирование ключа</h2>
+
+<div class="step">
+<strong>Шаг 1. Двойным кликом перейди на нужный номер.</strong>
+</div>
+
+<div class="step">
+<strong>Шаг 2. Заполни поле «Фамилия» гостя.</strong><br>
+Вписывай что угодно (для идентификации).
+</div>
+
+<div class="step">
+<strong>Шаг 3. Нажми «Заселить».</strong>
+</div>
+
+<div class="screenshot">
+[МЕСТО ДЛЯ СКРИНШОТА: окно заезда гостя с полем «Фамилия»]
+</div>
+
+<div class="step">
+<strong>Шаг 4. В опциях выбери «Добавить карту».</strong>
+</div>
+
+<div class="step">
+<strong>Шаг 5. Укажи количество карт.</strong><br>
+При необходимости заблокируй предыдущие карты.
+</div>
+
+<div class="step">
+<strong>Шаг 6. Жди звукового сигнала от кодера.</strong><br>
+Если карт две — жди два сигнала.
+</div>
+
+<div class="screenshot">
+[МЕСТО ДЛЯ СКРИНШОТА: окно добавления карты]
+</div>
+
+<h2>Чтение карты</h2>
+
+<div class="step">
+<strong>Шаг 1. На главном экране нажми кнопку «Считать карту».</strong>
+</div>
+
+<div class="step">
+<strong>Шаг 2. Приложи карту к кодеру и жди данных.</strong>
+</div>
+
+<div class="screenshot">
+[МЕСТО ДЛЯ СКРИНШОТА: информация о карте]
+</div>
+
+<h2>Установка времени выезда</h2>
+
+<div class="step">
+<strong>Шаг 1. Кликни на значок календаря и на время.</strong>
+</div>
+
+<div class="step">
+<strong>Шаг 2. Нажми кнопку «Продлить» и магнити ключ.</strong>
+</div>
+
+<div class="screenshot">
+[МЕСТО ДЛЯ СКРИНШОТА: календарь с выбором времени выезда]
+</div>
+
+<h2>Частые ошибки</h2>
+<ul>
+    <li><strong>Не дождался звукового сигнала.</strong> Карта не закодирована.</li>
+    <li><strong>Не указал количество карт.</strong> Выдал меньше, чем нужно.</li>
+    <li><strong>Не установил время выезда.</strong> Ключ работает дольше, чем нужно.</li>
+    <li><strong>Не заблокировал предыдущие карты.</strong> Старые ключи всё ещё работают.</li>
+</ul><script src="../ui.js"></script>
+</body>
+</html>
+
