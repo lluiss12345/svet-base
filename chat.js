@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Загрузка истории при старте
     async function loadHistory() {
         try {
-            const res = await fetch('http://localhost:3000/history');
+            const res = await fetch('https://baza-svet.ru');
             const data = await res.json();
             if (data.history && data.history.length > 0) {
                 messagesContainer.innerHTML = ''; // Очищаем приветствие
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
         try {
-            const res = await fetch('http://localhost:3000/ask', {
+            const res = await fetch('https://baza-svet.ru', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ question })
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
         clearBtn.addEventListener('click', async () => {
             if (!confirm('Очистить всю историю чата?')) return;
             try {
-                await fetch('http://localhost:3000/clear-history', { method: 'POST' });
+                await fetch('https://baza-svet.ru', { method: 'POST' });
                 messagesContainer.innerHTML = '';
                 addMessage('Привет! Я ассистент отеля. Задайте вопрос.', 'bot');
             } catch (e) {
